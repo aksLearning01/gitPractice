@@ -1,8 +1,7 @@
 package edu.aks.calc;
 
 import edu.aks.calc.builder.UtilBuilder;
-import edu.aks.calc.operator.Add;
-import edu.aks.calc.operator.Operator;
+import edu.aks.calc.operator.*;
 import edu.aks.calc.util.StringUtils;
 
 import java.io.BufferedReader;
@@ -54,32 +53,128 @@ public class CommandUtil {
 
 
     public void operatorChoiceMenu ( Integer choice ) {
-        Operator op;
+        Operator op = null;
 
         List<Double> numberList = new ArrayList<> ();
         try {
             BufferedReader br = new BufferedReader ( new InputStreamReader ( System.in ) );
             switch (choice) {
                 case 1:
-                    System.out.println ( "Please type the numbers you want to add separated by space" +
-                            " and press enter to mention end of numbers" );
-                    String numbersForOperation = br.readLine ();
-                    List<Double> list = util.findNumbersForOperator ( numbersForOperation );
-                    if (null == list || list.isEmpty ()) {
-                        break;
-                    }
-
-                    op = new Add ( list );
-                    Double result = builder.build ( op );
-                    System.out.println ( "The summation of the numbers is " + result );
-                    System.out.println ( "Do you want to perform some other operation" );
-                    System.out.println ( "Please type Y or N" );
-                    String suggestion = br.readLine ();
-                    if (suggestion.equalsIgnoreCase ( "Y" )) {
-
-                    }
+                    operateAdd ( br, op );
                     break;
+                case 2:
+                    operateSubtract ( br, op );
+                    break;
+                case 3:
+                    operateMultiply ( br, op );
+                    break;
+                case 4:
+                    operateDivision ( br, op );
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace ();
+        }
+    }
 
+    public void operateAdd ( BufferedReader br, Operator op ) {
+        try {
+            System.out.println ( "Please type the numbers you want to add separated by space" +
+                    " and press enter to mention end of numbers" );
+            String numbersForOperation = br.readLine ();
+            List<Double> list = util.findNumbersForOperator ( numbersForOperation );
+            if (null == list || list.isEmpty ()) {
+                return;
+            }
+            op = new Add ( list );
+            Double result = builder.build ( op );
+            System.out.println ( "The summation of the numbers is " + result );
+            System.out.println ( "Do you want to perform some other operation" );
+            System.out.println ( "Please type Y or N" );
+            String suggestion = br.readLine ();
+            if (suggestion.equalsIgnoreCase ( "Y" )) {
+                showInterface ();
+            } else {
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace ();
+        }
+
+    }
+
+
+    public void operateSubtract ( BufferedReader br, Operator op ) {
+        try {
+            System.out.println ( "Please type the numbers you want to subtract separated by space" +
+                    " and press enter to mention end of numbers" );
+            String numbersForOperation = br.readLine ();
+            List<Double> list = util.findNumbersForOperator ( numbersForOperation );
+            if (null == list || list.isEmpty ()) {
+                return;
+            }
+            op = new Subtract ( list );
+            Double result = builder.build ( op );
+            System.out.println ( "The difference of the numbers is " + result );
+            System.out.println ( "Do you want to perform some other operation" );
+            System.out.println ( "Please type Y or N" );
+            String suggestion = br.readLine ();
+            if (suggestion.equalsIgnoreCase ( "Y" )) {
+                showInterface ();
+            } else {
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace ();
+        }
+
+    }
+
+
+    public void operateMultiply ( BufferedReader br, Operator op ) {
+        try {
+            System.out.println ( "Please type the numbers you want to get product for separated by space" +
+                    " and press enter to mention end of numbers" );
+            String numbersForOperation = br.readLine ();
+            List<Double> list = util.findNumbersForOperator ( numbersForOperation );
+            if (null == list || list.isEmpty ()) {
+                return;
+            }
+            op = new Multiply ( list );
+            Double result = builder.build ( op );
+            System.out.println ( "The product of the numbers is " + result );
+            System.out.println ( "Do you want to perform some other operation" );
+            System.out.println ( "Please type Y or N" );
+            String suggestion = br.readLine ();
+            if (suggestion.equalsIgnoreCase ( "Y" )) {
+                showInterface ();
+            } else {
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace ();
+        }
+    }
+
+    public void operateDivision ( BufferedReader br, Operator op ) {
+        try {
+            System.out.println ( "Please type the numbers you want to get divison for separated by space" +
+                    " and press enter to mention end of numbers" );
+            String numbersForOperation = br.readLine ();
+            List<Double> list = util.findNumbersForOperator ( numbersForOperation );
+            if (null == list || list.isEmpty ()) {
+                return;
+            }
+            op = new Divide ( list );
+            Double result = builder.build ( op );
+            System.out.println ( "The division of the numbers is " + result );
+            System.out.println ( "Do you want to perform some other operation" );
+            System.out.println ( "Please type Y or N" );
+            String suggestion = br.readLine ();
+            if (suggestion.equalsIgnoreCase ( "Y" )) {
+                showInterface ();
+            } else {
+                return;
             }
         } catch (Exception e) {
             e.printStackTrace ();

@@ -11,6 +11,6 @@ public class Main {
         } else {
             util.operatorChoiceMenu ( userIp );
         }
-        // System.out.println ( "User input is as " + userIp );
+        System.out.println ( "Thanks for visiting !!!" );
     }
 }
