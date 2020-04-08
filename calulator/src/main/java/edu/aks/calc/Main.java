@@ -7,9 +7,6 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class Main{
 
-   // private static Logger logger = LoggerFactory.getLogger(Main.class);
-
-
     public static void main ( String[] args ) {
         log.info("Main method functionality started !!!!");
         CommandUtil util = new CommandUtil ();
