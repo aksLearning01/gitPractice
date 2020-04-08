@@ -1,6 +1,5 @@
 package edu.aks.calc;
 
-
 import edu.aks.calc.util.CommandUtil;
 import lombok.extern.log4j.Log4j;
 
